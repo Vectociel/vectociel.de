@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vectociel GmbH – Connecting the World</title>
-  <meta name="description" content="Vectociel GmbH – Handel mit Automatisierungstechnik. Connecting the World." />
+  <meta name="description" id="metaDesc" content="Vectociel GmbH – Handel mit Automatisierungstechnik. Connecting the World." />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='1' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%2335b6ff'/%3E%3Cstop offset='1' stop-color='%2316237f'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='42' fill='none' stroke='url(%23g)' stroke-width='14'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -59,6 +59,7 @@
     }
     footer .logo-img { height: 38px; width: 113px; }
 
+    .header-right { display: flex; align-items: center; gap: 28px; }
     nav { display: flex; gap: 36px; }
     nav a {
       font-size: 14px;
@@ -76,6 +77,17 @@
     }
     nav a:hover::after { width: 100%; }
     @media (max-width: 640px) { nav { display: none; } }
+
+    .lang { display: flex; align-items: center; gap: 4px; }
+    .lang button {
+      background: none; border: 0; cursor: pointer;
+      font-family: inherit; font-size: 13px; font-weight: 600;
+      letter-spacing: .04em; color: var(--gray);
+      padding: 4px 7px; border-radius: 6px;
+      transition: color .2s ease, background .2s ease;
+    }
+    .lang button:hover { color: var(--ink); }
+    .lang button.active { color: #fff; background: var(--blue-2); }
 
     /* Hero */
     .hero {
@@ -217,40 +229,47 @@
     <a class="brand" href="#top" aria-label="Vectociel">
       <span class="logo-img" role="img" aria-label="Vectociel"></span>
     </a>
-    <nav>
-      <a href="#top">Start</a>
-      <a href="#kontakt">Kontakt</a>
-    </nav>
+    <div class="header-right">
+      <nav>
+        <a href="#top" data-i18n="navHome">Start</a>
+        <a href="#kontakt" data-i18n="navContact">Kontakt</a>
+      </nav>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="de">DE</button>
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="zh">中</button>
+      </div>
+    </div>
   </header>
 
   <main id="top">
     <section class="hero">
-      <span class="eyebrow">Vectociel GmbH · Automation Equipment Trading</span>
-      <h1>Connecting the <span class="accent">World</span>.</h1>
-      <p class="lead">
+      <span class="eyebrow" data-i18n="eyebrow">Vectociel GmbH · Automation Equipment Trading</span>
+      <h1 data-i18n-html="heroH1">Connecting the <span class="accent">World</span>.</h1>
+      <p class="lead" data-i18n="lead">
         Internationaler Handel mit Automatisierungstechnik – wir verbinden
         Hersteller und Märkte weltweit mit zuverlässiger, zukunftsfähiger Technologie.
       </p>
       <a class="cta" href="#kontakt">
-        Kontakt aufnehmen
+        <span data-i18n="cta">Kontakt aufnehmen</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
     </section>
 
     <section class="contact" id="kontakt">
       <div class="inner">
-        <div class="section-label">Kontakt</div>
+        <div class="section-label" data-i18n="contactLabel">Kontakt</div>
         <div class="grid">
           <div class="cell">
-            <div class="k">Unternehmen</div>
+            <div class="k" data-i18n="kCompany">Unternehmen</div>
             <div class="v">Vectociel GmbH</div>
           </div>
           <div class="cell">
-            <div class="k">Adresse</div>
+            <div class="k" data-i18n="kAddress">Adresse</div>
             <div class="v">Nauenweg 38D<br />47805 Krefeld</div>
           </div>
           <div class="cell">
-            <div class="k">E-Mail</div>
+            <div class="k" data-i18n="kEmail">E-Mail</div>
             <a class="v" href="mailto:info@vectociel.de">info@vectociel.de</a>
           </div>
         </div>
@@ -267,12 +286,99 @@
         Vectociel GmbH · Nauenweg 38D · 47805 Krefeld<br />
         <a href="mailto:info@vectociel.de">info@vectociel.de</a>
       </div>
-      <div class="copy">© <span id="year"></span> Vectociel GmbH. Alle Rechte vorbehalten.</div>
+      <div class="copy" data-i18n-html="copyright">© <span id="year"></span> Vectociel GmbH. Alle Rechte vorbehalten.</div>
     </div>
   </footer>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    const I18N = {
+      de: {
+        title: "Vectociel GmbH – Connecting the World",
+        metaDesc: "Vectociel GmbH – Handel mit Automatisierungstechnik. Connecting the World.",
+        navHome: "Start",
+        navContact: "Kontakt",
+        eyebrow: "Vectociel GmbH · Handel mit Automatisierungstechnik",
+        heroH1: 'Weltweit <span class="accent">verbunden</span>.',
+        lead: "Internationaler Handel mit Automatisierungstechnik – wir verbinden Hersteller und Märkte weltweit mit zuverlässiger, zukunftsfähiger Technologie.",
+        cta: "Kontakt aufnehmen",
+        contactLabel: "Kontakt",
+        kCompany: "Unternehmen",
+        kAddress: "Adresse",
+        kEmail: "E-Mail",
+        copyright: "© {year} Vectociel GmbH. Alle Rechte vorbehalten."
+      },
+      en: {
+        title: "Vectociel GmbH – Connecting the World",
+        metaDesc: "Vectociel GmbH – Automation equipment trading. Connecting the World.",
+        navHome: "Home",
+        navContact: "Contact",
+        eyebrow: "Vectociel GmbH · Automation Equipment Trading",
+        heroH1: 'Connecting the <span class="accent">World</span>.',
+        lead: "International trade in automation equipment – we connect manufacturers and markets worldwide with reliable, future-ready technology.",
+        cta: "Get in touch",
+        contactLabel: "Contact",
+        kCompany: "Company",
+        kAddress: "Address",
+        kEmail: "Email",
+        copyright: "© {year} Vectociel GmbH. All rights reserved."
+      },
+      zh: {
+        title: "Vectociel GmbH – 连通全球",
+        metaDesc: "Vectociel GmbH – 自动化设备贸易。连通全球。",
+        navHome: "首页",
+        navContact: "联系",
+        eyebrow: "Vectociel GmbH · 自动化设备贸易",
+        heroH1: '连通<span class="accent">全球</span>。',
+        lead: "国际自动化设备贸易 —— 我们以可靠、面向未来的技术，连接全球的制造商与市场。",
+        cta: "联系我们",
+        contactLabel: "联系方式",
+        kCompany: "公司",
+        kAddress: "地址",
+        kEmail: "邮箱",
+        copyright: "© {year} Vectociel GmbH. 保留所有权利。"
+      }
+    };
+
+    const SUPPORTED = ["de", "en", "zh"];
+    const year = new Date().getFullYear();
+
+    function applyLang(lang) {
+      const dict = I18N[lang] || I18N.de;
+      document.documentElement.lang = lang;
+      document.title = dict.title;
+      const md = document.getElementById("metaDesc");
+      if (md) md.setAttribute("content", dict.metaDesc);
+
+      document.querySelectorAll("[data-i18n]").forEach(function (el) {
+        const k = el.getAttribute("data-i18n");
+        if (dict[k] != null) el.textContent = dict[k];
+      });
+      document.querySelectorAll("[data-i18n-html]").forEach(function (el) {
+        const k = el.getAttribute("data-i18n-html");
+        if (dict[k] != null) el.innerHTML = dict[k].replace("{year}", year);
+      });
+      document.querySelectorAll(".lang button").forEach(function (b) {
+        b.classList.toggle("active", b.getAttribute("data-lang") === lang);
+      });
+      try { localStorage.setItem("lang", lang); } catch (e) {}
+    }
+
+    function detectLang() {
+      try {
+        const saved = localStorage.getItem("lang");
+        if (saved && SUPPORTED.includes(saved)) return saved;
+      } catch (e) {}
+      const nav = (navigator.language || "de").toLowerCase();
+      if (nav.startsWith("zh")) return "zh";
+      if (nav.startsWith("en")) return "en";
+      return "de";
+    }
+
+    document.querySelectorAll(".lang button").forEach(function (b) {
+      b.addEventListener("click", function () { applyLang(b.getAttribute("data-lang")); });
+    });
+    applyLang(detectLang());
+
     const header = document.getElementById("header");
     const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 10);
     onScroll();
