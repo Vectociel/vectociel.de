@@ -3,99 +3,280 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vectociel GmbH</title>
-  <meta name="description" content="Vectociel GmbH – Krefeld" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E▲%3C/text%3E%3C/svg%3E" />
+  <title>Vectociel GmbH – Connecting the World</title>
+  <meta name="description" content="Vectociel GmbH – Handel mit Automatisierungstechnik. Connecting the World." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='1' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%2335b6ff'/%3E%3Cstop offset='1' stop-color='%2316237f'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='42' fill='none' stroke='url(%23g)' stroke-width='14'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0b0f17;
-      --bg-soft: #111827;
-      --fg: #e5e7eb;
-      --muted: #9ca3af;
-      --accent: #6366f1;
-      --border: #1f2937;
+      --black: #0d0d12;
+      --ink: #1a1d23;
+      --gray: #6b6f76;
+      --line: #e3e4e6;
+      --bg: #ffffff;
+      --bg-alt: #f4f5f6;
+      --blue-1: #35b6ff;
+      --blue-2: #16237f;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: radial-gradient(1200px 600px at 50% -10%, #1a2236 0%, var(--bg) 60%);
-      color: var(--fg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 24px;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
       line-height: 1.6;
     }
-    .card {
-      width: 100%;
-      max-width: 560px;
-      background: var(--bg-soft);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 48px 40px;
-      text-align: center;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+    a { color: inherit; text-decoration: none; }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px clamp(20px, 5vw, 64px);
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: saturate(180%) blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color .3s ease;
     }
-    .logo {
-      font-size: 40px;
-      color: var(--accent);
+    header.scrolled { border-bottom-color: var(--line); }
+
+    .brand { display: flex; align-items: center; }
+    .logo-img {
+      display: block;
+      background-image: url("data:image/webp;base64,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");
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: contain;
+      height: 32px;
+      width: 96px;
+    }
+    footer .logo-img { height: 38px; width: 113px; }
+
+    nav { display: flex; gap: 36px; }
+    nav a {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: .04em;
+      color: var(--ink);
+      position: relative;
+      padding: 4px 0;
+    }
+    nav a::after {
+      content: ""; position: absolute; left: 0; bottom: 0;
+      width: 0; height: 2px;
+      background: linear-gradient(90deg, var(--blue-1), var(--blue-2));
+      transition: width .25s ease;
+    }
+    nav a:hover::after { width: 100%; }
+    @media (max-width: 640px) { nav { display: none; } }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 140px clamp(20px, 5vw, 64px) 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -20%; right: -10%;
+      width: 70vw; height: 70vw;
+      max-width: 900px; max-height: 900px;
+      background: radial-gradient(circle, rgba(53,182,255,.16), rgba(22,35,127,.05) 55%, transparent 70%);
+      pointer-events: none;
+    }
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      color: var(--blue-2);
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(44px, 8vw, 104px);
+      font-weight: 700;
+      line-height: 1.02;
+      letter-spacing: -.02em;
+      color: var(--black);
+      max-width: 14ch;
+    }
+    .hero h1 .accent {
+      background: linear-gradient(120deg, var(--blue-1), var(--blue-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p.lead {
+      margin-top: 28px;
+      font-size: clamp(17px, 2vw, 20px);
+      font-weight: 300;
+      color: var(--gray);
+      max-width: 52ch;
+    }
+    .hero .cta {
+      margin-top: 44px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      align-self: flex-start;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: .02em;
+      color: var(--black);
+      border-bottom: 2px solid var(--black);
+      padding-bottom: 6px;
+      transition: gap .25s ease;
+    }
+    .hero .cta:hover { gap: 18px; }
+    .hero .cta svg { width: 18px; height: 18px; }
+
+    /* Contact */
+    .contact {
+      background: var(--bg-alt);
+      padding: clamp(72px, 10vw, 140px) clamp(20px, 5vw, 64px);
+    }
+    .contact .inner { max-width: 1200px; margin: 0 auto; }
+    .section-label {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 48px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+    .cell {
+      background: var(--bg);
+      padding: 44px 40px;
+    }
+    .cell .k {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--blue-2);
       margin-bottom: 16px;
     }
-    h1 {
-      font-size: 28px;
-      letter-spacing: 0.5px;
-      margin-bottom: 28px;
+    .cell .v {
+      font-size: clamp(19px, 2.4vw, 26px);
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.4;
     }
-    .info {
-      color: var(--muted);
-      font-size: 16px;
+    .cell a.v:hover { color: var(--blue-2); }
+
+    /* Footer */
+    footer {
+      background: var(--black);
+      color: #c7cad0;
+      padding: 64px clamp(20px, 5vw, 64px) 40px;
     }
-    .info p { margin: 6px 0; }
-    .label {
-      display: block;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: #6b7280;
-      margin-top: 22px;
-      margin-bottom: 4px;
+    footer .inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; flex-wrap: wrap; gap: 32px;
+      align-items: flex-end; justify-content: space-between;
     }
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-    a:hover { text-decoration: underline; }
-    .footer {
-      margin-top: 36px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
+    footer .legal {
       font-size: 13px;
-      color: #6b7280;
+      font-weight: 300;
+      color: #8b9099;
+      line-height: 1.8;
+    }
+    footer .legal a:hover { color: #c7cad0; }
+    footer .copy {
+      width: 100%;
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid #23252d;
+      font-size: 12px;
+      letter-spacing: .04em;
+      color: #6c7079;
     }
   </style>
 </head>
 <body>
-  <main class="card">
-    <div class="logo">▲</div>
-    <h1>Vectociel GmbH</h1>
+  <header id="header">
+    <a class="brand" href="#top" aria-label="Vectociel">
+      <span class="logo-img" role="img" aria-label="Vectociel"></span>
+    </a>
+    <nav>
+      <a href="#top">Start</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </header>
 
-    <div class="info">
-      <span class="label">Adresse</span>
-      <p>Nauenweg 38D<br />47805 Krefeld</p>
+  <main id="top">
+    <section class="hero">
+      <span class="eyebrow">Vectociel GmbH · Automation Equipment Trading</span>
+      <h1>Connecting the <span class="accent">World</span>.</h1>
+      <p class="lead">
+        Internationaler Handel mit Automatisierungstechnik – wir verbinden
+        Hersteller und Märkte weltweit mit zuverlässiger, zukunftsfähiger Technologie.
+      </p>
+      <a class="cta" href="#kontakt">
+        Kontakt aufnehmen
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </section>
 
-      <span class="label">E-Mail</span>
-      <p><a href="mailto:info@vectociel.de">info@vectociel.de</a></p>
-    </div>
-
-    <div class="footer">
-      © <span id="year"></span> Vectociel GmbH
-    </div>
+    <section class="contact" id="kontakt">
+      <div class="inner">
+        <div class="section-label">Kontakt</div>
+        <div class="grid">
+          <div class="cell">
+            <div class="k">Unternehmen</div>
+            <div class="v">Vectociel GmbH</div>
+          </div>
+          <div class="cell">
+            <div class="k">Adresse</div>
+            <div class="v">Nauenweg 38D<br />47805 Krefeld</div>
+          </div>
+          <div class="cell">
+            <div class="k">E-Mail</div>
+            <a class="v" href="mailto:info@vectociel.de">info@vectociel.de</a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <div class="inner">
+      <div class="brand">
+        <span class="logo-img" role="img" aria-label="Vectociel"></span>
+      </div>
+      <div class="legal">
+        Vectociel GmbH · Nauenweg 38D · 47805 Krefeld<br />
+        <a href="mailto:info@vectociel.de">info@vectociel.de</a>
+      </div>
+      <div class="copy">© <span id="year"></span> Vectociel GmbH. Alle Rechte vorbehalten.</div>
+    </div>
+  </footer>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+    const header = document.getElementById("header");
+    const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 10);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
   </script>
 </body>
 </html>
