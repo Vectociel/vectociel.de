@@ -368,9 +368,6 @@
         const saved = localStorage.getItem("lang");
         if (saved && SUPPORTED.includes(saved)) return saved;
       } catch (e) {}
-      const nav = (navigator.language || "de").toLowerCase();
-      if (nav.startsWith("zh")) return "zh";
-      if (nav.startsWith("en")) return "en";
       return "de";
     }
 
